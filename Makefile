@@ -1,9 +1,9 @@
 UI_PORT=8112
-DATA_FOLDER=/some/data/dir/
+DATA_FOLDER=/some/data/dir # No trailing slash
 VPN_USER=username
 VPN_PASS=password
 
-build:
+build: dirs
 	docker build -t deluge \
 	--build-arg VPN_USER=${VPN_USER} \
 	--build-arg VPN_PASS=${VPN_PASS} \
@@ -23,7 +23,7 @@ first-launch: build
 		--sysctl net.ipv6.conf.all.disable_ipv6=0 \
 		--privileged \
 		-t -d deluge
-start:
+start: dirs
 	docker start deluge
 
 stop:
@@ -36,3 +36,10 @@ clean: stop
 
 attach:
 	docker exec -i -t deluge /bin/bash
+
+dirs:
+	mkdir -p ${DATA_FOLDER}/movies
+	mkdir -p ${DATA_FOLDER}/tvshows
+	mkdir -p ${DATA_FOLDER}/completed
+	mkdir -p ${DATA_FOLDER}/torrents
+	mkdir -p ${DATA_FOLDER}/downloading

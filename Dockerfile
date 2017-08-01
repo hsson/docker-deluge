@@ -25,6 +25,9 @@ EXPOSE 1195
 # Mount volume where data will be saved
 VOLUME /data
 
+# Copy over deluge configs
+COPY deluge-conf/*.conf /root/.config/deluge/
+
 COPY startup.sh /etc/torrent/startup.sh
 RUN chmod +x /etc/torrent/startup.sh
 

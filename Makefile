@@ -1,5 +1,6 @@
 UI_PORT=8112
-DATA_FOLDER=/some/data/dir # No trailing slash
+# NOTE: No trailing slash in DATA_FOLDER
+DATA_FOLDER=/some/data/dir
 VPN_USER=username
 VPN_PASS=password
 

@@ -43,3 +43,6 @@ dirs:
 	mkdir -p ${DATA_FOLDER}/completed
 	mkdir -p ${DATA_FOLDER}/torrents
 	mkdir -p ${DATA_FOLDER}/downloading
+
+vpn:
+	docker exec -t deluge python /root/scripts/vpn_check.py

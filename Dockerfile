@@ -28,6 +28,9 @@ VOLUME /data
 # Copy over deluge configs
 COPY deluge-conf/*.conf /root/.config/deluge/
 
+# Copy over scripts
+COPY scripts/* /root/scripts/
+
 COPY startup.sh /etc/torrent/startup.sh
 RUN chmod +x /etc/torrent/startup.sh
 
